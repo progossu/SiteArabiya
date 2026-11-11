@@ -1,0 +1,866 @@
+<style>
+    :root {
+      --primary: #1b4332;
+      --primary-light: #2d6a4f;
+      --primary-dark: #081c15;
+      --accent: #c99738;
+      --accent-light: #e0b354;
+      --accent-soft: #fbf5e8;
+      --quran-gold: #996515;
+      --quran-inline-bg: rgba(201, 151, 56, 0.12);
+      --quran-inline-border: #c99738;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --arabic-font: 'Amiri', 'Scheherazade New', 'Traditional Arabic', serif;
+      --quran-font: 'Amiri Quran', 'Amiri', serif;
+      --ui-font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+      --tooltip-bg: #111827;
+      --tooltip-color: #f9fafb;
+    }
+
+    [data-theme="dark"] {
+      --primary: #2d6a4f;
+      --primary-light: #40916c;
+      --primary-dark: #081c15;
+      --accent: #d4a373;
+      --accent-light: #faedcd;
+      --accent-soft: #242b26;
+      --quran-gold: #ffd175;
+      --quran-inline-bg: rgba(201, 151, 56, 0.2);
+      --quran-inline-border: #a87922;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --tooltip-bg: #f8fafc;
+      --tooltip-color: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--ui-font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 95px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: white;
+      padding: 2.2rem 1.5rem 1.8rem;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(201, 151, 56, 0.25);
+      border: 1px solid var(--accent);
+      color: var(--accent-light);
+      padding: 0.25rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    header h1 {
+      font-family: var(--arabic-font);
+      font-size: 2.4rem;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Global Master Audio Banner */
+    .audio-player-banner {
+      background: var(--surface);
+      border-bottom: 2px solid var(--accent);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .player-left {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .play-master-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .play-master-btn:hover {
+      background: var(--primary-light);
+      transform: scale(1.05);
+    }
+
+    .player-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .player-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+
+    .player-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .player-progress-bar {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .player-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.1s linear;
+    }
+
+    .player-time {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 75px;
+      text-align: right;
+    }
+
+    .speed-select {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Sticky Control Toolbar */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--primary-light);
+    }
+
+    .btn-active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    .btn-active:hover {
+      background: var(--primary-light);
+      color: white;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1050px;
+      margin: 1.8rem auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Section Navigation Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary-light);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px 3px 0 0;
+    }
+
+    /* Card styling */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .card-title-ar {
+      font-family: var(--arabic-font);
+      font-size: 1.6rem;
+      margin-right: 0.5rem;
+    }
+
+    /* Paragraph Box & Card */
+    .para-card, .para-box {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-right: 5px solid var(--accent);
+      padding: 1.75rem 2rem;
+      margin-bottom: 2.25rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      transition: all 0.25s ease;
+    }
+
+    .para-card.playing, .para-box.playing {
+      background-color: rgba(201, 151, 56, 0.08);
+      border-right: 5px solid #2d6a4f;
+      box-shadow: 0 4px 20px rgba(45, 106, 79, 0.18);
+    }
+
+    .para-card-topbar, .para-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      direction: ltr;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .para-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      color: var(--primary);
+      padding: 0.25rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: var(--arabic-font);
+      direction: rtl;
+    }
+
+    [data-theme="dark"] .para-badge-pill {
+      background: rgba(212, 163, 115, 0.15);
+      border-color: var(--accent);
+      color: var(--accent-light);
+    }
+
+    .para-title-center {
+      text-align: center;
+      margin: 0.6rem auto 1.3rem auto;
+      padding: 0.25rem 0.5rem;
+      max-width: 900px;
+    }
+
+    .para-title {
+      font-family: var(--arabic-font);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #b45309;
+      direction: rtl;
+      text-align: center;
+      line-height: 1.45;
+      margin: 0 0 0.35rem 0;
+      letter-spacing: 0.3px;
+    }
+
+    [data-theme="dark"] .para-title {
+      color: #fbbf24;
+    }
+
+    .para-subtitle-ru {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.4;
+      direction: ltr;
+      margin: 0;
+    }
+
+    .para-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .para-play-btn {
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      color: var(--primary);
+      border-radius: 8px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .para-play-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .para-play-btn.playing {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.75; }
+      100% { opacity: 1; }
+    }
+
+    .action-icon-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .action-icon-btn:hover {
+      background: var(--accent-soft);
+      color: var(--primary);
+      border-color: var(--accent);
+    }
+
+    /* Arabic Text Section - Generous line-height to completely prevent diacritics / vowel overlapping */
+    .arabic-article {
+      direction: rtl;
+      text-align: justify;
+      font-family: var(--arabic-font);
+      font-size: 1.65rem;
+      line-height: 2.85;
+      color: var(--text);
+      word-spacing: 2px;
+      margin-top: 0.5rem;
+    }
+
+    /* Pure Inline Quranic Ayahs */
+    .quran-inline {
+      display: inline;
+      background: var(--quran-inline-bg);
+      border-radius: 6px;
+      padding: 0.15rem 0.4rem;
+      border-bottom: 2px solid var(--quran-inline-border);
+      margin: 0 0.2rem;
+      line-height: inherit;
+    }
+
+    .quran-ayah {
+      font-family: var(--quran-font);
+      color: var(--quran-gold);
+      font-weight: bold;
+      line-height: inherit;
+    }
+
+    .quran-inline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.8rem;
+      font-family: var(--ui-font);
+      font-weight: 600;
+      cursor: pointer;
+      vertical-align: middle;
+      margin: 0 0.35rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      transition: all 0.15s;
+    }
+
+    .quran-inline-btn:hover {
+      background: var(--primary-light);
+      transform: scale(1.05);
+    }
+
+    .quran-inline-btn.playing {
+      background: #b38226;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Word Interactive Hover / Click - Baseline aligned with no layout shift */
+    .ar-word {
+      display: inline-block;
+      vertical-align: baseline;
+      cursor: pointer;
+      position: relative;
+      padding: 0 2px;
+      margin: 0 1px;
+      border-radius: 4px;
+      line-height: inherit;
+      transition: background-color 0.15s, color 0.15s;
+    }
+
+    .ar-word:hover {
+      background-color: rgba(201, 151, 56, 0.3);
+      color: var(--primary);
+    }
+
+    .ar-word:active {
+      transform: scale(0.96);
+    }
+
+    /* Timecode Audio Sync (Karaoke Highlighting) - High Contrast & Crystal Clear (Zero vertical expansion to prevent overlapping) */
+    .ar-word.audio-active,
+    .ar-word.ar-allah.audio-active,
+    .ar-word.ar-salawat.audio-active {
+      background-color: #fef08a !important;
+      color: #0f172a !important;
+      font-weight: 800 !important;
+      border-radius: 5px;
+      box-shadow: 0 0 0 2px #eab308, 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+      text-shadow: none !important;
+      transform: none !important;
+      display: inline-block;
+      vertical-align: baseline;
+      position: relative;
+      z-index: 2;
+    }
+
+    [data-theme="dark"] .ar-word.audio-active,
+    [data-theme="dark"] .ar-word.ar-allah.audio-active,
+    [data-theme="dark"] .ar-word.ar-salawat.audio-active {
+      background-color: #fde047 !important;
+      color: #000000 !important;
+      box-shadow: 0 0 0 2px #eab308, 0 3px 10px rgba(253, 224, 71, 0.35) !important;
+      text-shadow: none !important;
+      transform: none !important;
+    }
+
+    /* Quran Verse Karaoke Highlight - Radiant Warm Gold Aura */
+    .quran-inline.audio-active {
+      background: rgba(234, 179, 8, 0.28) !important;
+      border-bottom: 2px solid #b45309 !important;
+      box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.55), 0 4px 14px rgba(234, 179, 8, 0.3) !important;
+      border-radius: 8px !important;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      z-index: 2;
+    }
+    [data-theme="dark"] .quran-inline.audio-active {
+      background: rgba(253, 224, 71, 0.25) !important;
+      border-bottom: 2px solid #facc15 !important;
+      box-shadow: 0 0 0 3px rgba(253, 224, 71, 0.55), 0 4px 16px rgba(253, 224, 71, 0.35) !important;
+      border-radius: 8px !important;
+    }
+
+    /* PWA Install Button */
+    .pwa-install-btn {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, var(--accent), #b38226);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(201, 151, 56, 0.35);
+      transition: all 0.2s;
+    }
+
+    .pwa-install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(201, 151, 56, 0.5);
+    }
+
+    .ar-salawat {
+      color: #2d6a4f;
+      font-weight: bold;
+      background: rgba(45, 106, 79, 0.1);
+      padding: 0 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(45, 106, 79, 0.3);
+    }
+
+    /* Tooltip styles */
+    #tooltip {
+      position: absolute;
+      background: var(--tooltip-bg);
+      color: var(--tooltip-color);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: var(--ui-font);
+      font-weight: 500;
+      pointer-events: none;
+      z-index: 1000;
+      box-shadow: var(--shadow-lg);
+      white-space: nowrap;
+      direction: ltr;
+      display: none;
+      transition: opacity 0.15s;
+    }
+    #tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -6px;
+      border-width: 6px;
+      border-style: solid;
+      border-color: var(--tooltip-bg) transparent transparent transparent;
+    }
+
+    /* Fixed Bottom Translation Bar / Live Inspector */
+    .inspector-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 2px solid var(--accent);
+      padding: 0.85rem 1.5rem;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 99;
+    }
+
+    .inspector-content {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .inspector-ar {
+      font-family: var(--arabic-font);
+      font-size: 1.85rem;
+      font-weight: bold;
+      color: var(--primary);
+      direction: rtl;
+    }
+
+    .inspector-ru {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .inspector-context {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--bg);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 1rem;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    tr:hover td {
+      background: var(--accent-soft);
+    }
+
+    td.ar-cell {
+      font-family: var(--arabic-font);
+      font-size: 1.4rem;
+      direction: rtl;
+    }
+
+    td.ru-cell {
+      direction: ltr;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .badge-form {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      background: rgba(45, 106, 79, 0.1);
+      border: 1px solid rgba(45, 106, 79, 0.3);
+      color: var(--primary-light);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Search & Filter box */
+    .filter-box {
+      margin-bottom: 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Cards grid for expressions */
+    .collocations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .collocation-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      border-top: 3px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .collocation-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-top-color: var(--accent);
+    }
+
+    .colloc-ar {
+      font-family: var(--arabic-font);
+      font-size: 1.45rem;
+      direction: rtl;
+      color: var(--primary-light);
+      margin-bottom: 0.5rem;
+      line-height: 1.8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .colloc-ru {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .colloc-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Audio Speaker Icon */
+    .speak-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--accent);
+      padding: 0.2rem;
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      font-size: 1.15rem;
+      transition: transform 0.15s;
+    }
+    .speak-btn:hover {
+      transform: scale(1.2);
+      color: var(--accent-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      .arabic-article { font-size: 1.4rem; line-height: 2.2; }
+      .audio-player-banner { flex-direction: column; align-items: stretch; }
+      .player-controls { max-width: 100%; }
+      .toolbar { justify-content: center; }
+      .inspector-bar { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  </style>

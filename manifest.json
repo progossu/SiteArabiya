@@ -1,0 +1,24 @@
+{
+  "name": "العربية بين يديك • Al-Arabiyyah Bayna Yadayk",
+  "short_name": "العربية",
+  "description": "Интерактивный учебный курс литературного арабского языка (3-й том) с аудио, таджвидом и словарем",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0f172a",
+  "theme_color": "#1b4332",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

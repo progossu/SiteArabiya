@@ -1,0 +1,24 @@
+# Binaries & Large archives
+*.apk
+Al-Arabi-bin-Yadik-3-1_compressed.pdf
+
+# Android build outputs and duplicate audio
+android_app/app/build/
+android_app/.gradle/
+android_app/local.properties
+android_app/app/src/main/assets/audio/
+
+# Python caches and temporary scripts
+__pycache__/
+*.pyc
+tmp*
+test_*
+anzalahu_*
+check_*.py
+dump_*.py
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

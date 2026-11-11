@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>العربية بين يديك — الكتاب الثالث | فهرس الوحدات (Оглавление)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Scheherazade+New:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- PWA Manifest & Mobile Meta -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1b4332">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="العربية">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+  <style>
+    :root {
+      --primary: #1b4332;
+      --primary-light: #2d6a4f;
+      --primary-dark: #081c15;
+      --accent: #c99738;
+      --accent-light: #e0b354;
+      --accent-soft: #fbf5e8;
+      --quran-gold: #996515;
+      --quran-inline-bg: rgba(201, 151, 56, 0.12);
+      --quran-inline-border: #c99738;
+      --bg: #f8f9fa;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --text-muted: #6b7280;
+      --border: #e5e7eb;
+      --arabic-font: 'Amiri', 'Scheherazade New', 'Traditional Arabic', serif;
+      --quran-font: 'Amiri Quran', 'Amiri', serif;
+      --ui-font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --radius: 12px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+      --tooltip-bg: #111827;
+      --tooltip-color: #f9fafb;
+    }
+
+    [data-theme="dark"] {
+      --primary: #2d6a4f;
+      --primary-light: #40916c;
+      --primary-dark: #081c15;
+      --accent: #d4a373;
+      --accent-light: #faedcd;
+      --accent-soft: #242b26;
+      --quran-gold: #ffd175;
+      --quran-inline-bg: rgba(201, 151, 56, 0.2);
+      --quran-inline-border: #a87922;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --tooltip-bg: #f8fafc;
+      --tooltip-color: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--ui-font);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 95px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: white;
+      padding: 2.2rem 1.5rem 1.8rem;
+      text-align: center;
+      position: relative;
+      box-shadow: var(--shadow-md);
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .header-badge {
+      display: inline-block;
+      background: rgba(201, 151, 56, 0.25);
+      border: 1px solid var(--accent);
+      color: var(--accent-light);
+      padding: 0.25rem 0.9rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+    }
+
+    header h1 {
+      font-family: var(--arabic-font);
+      font-size: 2.4rem;
+      margin-bottom: 0.4rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* Global Master Audio Banner */
+    .audio-player-banner {
+      background: var(--surface);
+      border-bottom: 2px solid var(--accent);
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .player-left {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .play-master-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .play-master-btn:hover {
+      background: var(--primary-light);
+      transform: scale(1.05);
+    }
+
+    .player-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .player-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+    }
+
+    .player-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .player-progress-bar {
+      flex: 1;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .player-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.1s linear;
+    }
+
+    .player-time {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      min-width: 75px;
+      text-align: right;
+    }
+
+    .speed-select {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Sticky Control Toolbar */
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toolbar-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--primary-light);
+    }
+
+    .btn-active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    .btn-active:hover {
+      background: var(--primary-light);
+      color: white;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1050px;
+      margin: 1.8rem auto;
+      padding: 0 1.25rem;
+    }
+
+    /* Section Navigation Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 2rem;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      position: relative;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary-light);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px 3px 0 0;
+    }
+
+    /* Card styling */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .card-title-ar {
+      font-family: var(--arabic-font);
+      font-size: 1.6rem;
+      margin-right: 0.5rem;
+    }
+
+    /* Paragraph Box & Card */
+    .para-card, .para-box {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-right: 5px solid var(--accent);
+      padding: 1.75rem 2rem;
+      margin-bottom: 2.25rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      transition: all 0.25s ease;
+    }
+
+    .para-card.playing, .para-box.playing {
+      background-color: rgba(201, 151, 56, 0.08);
+      border-right: 5px solid #2d6a4f;
+      box-shadow: 0 4px 20px rgba(45, 106, 79, 0.18);
+    }
+
+    .para-card-topbar, .para-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      direction: ltr;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .para-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      color: var(--primary);
+      padding: 0.25rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: var(--arabic-font);
+      direction: rtl;
+    }
+
+    [data-theme="dark"] .para-badge-pill {
+      background: rgba(212, 163, 115, 0.15);
+      border-color: var(--accent);
+      color: var(--accent-light);
+    }
+
+    .para-title-center {
+      text-align: center;
+      margin: 0.6rem auto 1.3rem auto;
+      padding: 0.25rem 0.5rem;
+      max-width: 900px;
+    }
+
+    .para-title {
+      font-family: var(--arabic-font);
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #b45309;
+      direction: rtl;
+      text-align: center;
+      line-height: 1.45;
+      margin: 0 0 0.35rem 0;
+      letter-spacing: 0.3px;
+    }
+
+    [data-theme="dark"] .para-title {
+      color: #fbbf24;
+    }
+
+    .para-subtitle-ru {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.4;
+      direction: ltr;
+      margin: 0;
+    }
+
+    .para-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .para-play-btn {
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      color: var(--primary);
+      border-radius: 8px;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .para-play-btn:hover {
+      background: var(--accent);
+      color: white;
+    }
+
+    .para-play-btn.playing {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.75; }
+      100% { opacity: 1; }
+    }
+
+    .action-icon-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .action-icon-btn:hover {
+      background: var(--accent-soft);
+      color: var(--primary);
+      border-color: var(--accent);
+    }
+
+    /* Arabic Text Section - Generous line-height to completely prevent diacritics / vowel overlapping */
+    .arabic-article {
+      direction: rtl;
+      text-align: justify;
+      font-family: var(--arabic-font);
+      font-size: 1.65rem;
+      line-height: 2.85;
+      color: var(--text);
+      word-spacing: 2px;
+      margin-top: 0.5rem;
+    }
+
+    /* Pure Inline Quranic Ayahs */
+    .quran-inline {
+      display: inline;
+      background: var(--quran-inline-bg);
+      border-radius: 6px;
+      padding: 0.15rem 0.4rem;
+      border-bottom: 2px solid var(--quran-inline-border);
+      margin: 0 0.2rem;
+      line-height: inherit;
+    }
+
+    .quran-ayah {
+      font-family: var(--quran-font);
+      color: var(--quran-gold);
+      font-weight: bold;
+      line-height: inherit;
+    }
+
+    .quran-inline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.8rem;
+      font-family: var(--ui-font);
+      font-weight: 600;
+      cursor: pointer;
+      vertical-align: middle;
+      margin: 0 0.35rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      transition: all 0.15s;
+    }
+
+    .quran-inline-btn:hover {
+      background: var(--primary-light);
+      transform: scale(1.05);
+    }
+
+    .quran-inline-btn.playing {
+      background: #b38226;
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Word Interactive Hover / Click - Baseline aligned with no layout shift */
+    .ar-word {
+      display: inline-block;
+      vertical-align: baseline;
+      cursor: pointer;
+      position: relative;
+      padding: 0 2px;
+      margin: 0 1px;
+      border-radius: 4px;
+      line-height: inherit;
+      transition: background-color 0.15s, color 0.15s;
+    }
+
+    .ar-word:hover {
+      background-color: rgba(201, 151, 56, 0.3);
+      color: var(--primary);
+    }
+
+    .ar-word:active {
+      transform: scale(0.96);
+    }
+
+    /* Timecode Audio Sync (Karaoke Highlighting) - High Contrast & Crystal Clear (Zero vertical expansion to prevent overlapping) */
+    .ar-word.audio-active,
+    .ar-word.ar-allah.audio-active,
+    .ar-word.ar-salawat.audio-active {
+      background-color: #fef08a !important;
+      color: #0f172a !important;
+      font-weight: 800 !important;
+      border-radius: 5px;
+      box-shadow: 0 0 0 2px #eab308, 0 2px 6px rgba(0, 0, 0, 0.12) !important;
+      text-shadow: none !important;
+      transform: none !important;
+      display: inline-block;
+      vertical-align: baseline;
+      position: relative;
+      z-index: 2;
+    }
+
+    [data-theme="dark"] .ar-word.audio-active,
+    [data-theme="dark"] .ar-word.ar-allah.audio-active,
+    [data-theme="dark"] .ar-word.ar-salawat.audio-active {
+      background-color: #fde047 !important;
+      color: #000000 !important;
+      box-shadow: 0 0 0 2px #eab308, 0 3px 10px rgba(253, 224, 71, 0.35) !important;
+      text-shadow: none !important;
+      transform: none !important;
+    }
+
+    /* Quran Verse Karaoke Highlight - Radiant Warm Gold Aura */
+    .quran-inline.audio-active {
+      background: rgba(234, 179, 8, 0.28) !important;
+      border-bottom: 2px solid #b45309 !important;
+      box-shadow: 0 0 0 3px rgba(234, 179, 8, 0.55), 0 4px 14px rgba(234, 179, 8, 0.3) !important;
+      border-radius: 8px !important;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      z-index: 2;
+    }
+    [data-theme="dark"] .quran-inline.audio-active {
+      background: rgba(253, 224, 71, 0.25) !important;
+      border-bottom: 2px solid #facc15 !important;
+      box-shadow: 0 0 0 3px rgba(253, 224, 71, 0.55), 0 4px 16px rgba(253, 224, 71, 0.35) !important;
+      border-radius: 8px !important;
+    }
+
+    /* PWA Install Button */
+    .pwa-install-btn {
+      display: none;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, var(--accent), #b38226);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(201, 151, 56, 0.35);
+      transition: all 0.2s;
+    }
+
+    .pwa-install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(201, 151, 56, 0.5);
+    }
+
+    .ar-salawat {
+      color: #2d6a4f;
+      font-weight: bold;
+      background: rgba(45, 106, 79, 0.1);
+      padding: 0 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(45, 106, 79, 0.3);
+    }
+
+    /* Tooltip styles */
+    #tooltip {
+      position: absolute;
+      background: var(--tooltip-bg);
+      color: var(--tooltip-color);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: var(--ui-font);
+      font-weight: 500;
+      pointer-events: none;
+      z-index: 1000;
+      box-shadow: var(--shadow-lg);
+      white-space: nowrap;
+      direction: ltr;
+      display: none;
+      transition: opacity 0.15s;
+    }
+    #tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -6px;
+      border-width: 6px;
+      border-style: solid;
+      border-color: var(--tooltip-bg) transparent transparent transparent;
+    }
+
+    /* Fixed Bottom Translation Bar / Live Inspector */
+    .inspector-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 2px solid var(--accent);
+      padding: 0.85rem 1.5rem;
+      box-shadow: 0 -4px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 99;
+    }
+
+    .inspector-content {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .inspector-ar {
+      font-family: var(--arabic-font);
+      font-size: 1.85rem;
+      font-weight: bold;
+      color: var(--primary);
+      direction: rtl;
+    }
+
+    .inspector-ru {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .inspector-context {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: var(--bg);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 1rem;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      padding: 0.9rem 1rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    tr:hover td {
+      background: var(--accent-soft);
+    }
+
+    td.ar-cell {
+      font-family: var(--arabic-font);
+      font-size: 1.4rem;
+      direction: rtl;
+    }
+
+    td.ru-cell {
+      direction: ltr;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .badge-form {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      background: rgba(45, 106, 79, 0.1);
+      border: 1px solid rgba(45, 106, 79, 0.3);
+      color: var(--primary-light);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    /* Search & Filter box */
+    .filter-box {
+      margin-bottom: 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .search-input {
+      flex: 1;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Cards grid for expressions */
+    .collocations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .collocation-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      border-top: 3px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .collocation-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-top-color: var(--accent);
+    }
+
+    .colloc-ar {
+      font-family: var(--arabic-font);
+      font-size: 1.45rem;
+      direction: rtl;
+      color: var(--primary-light);
+      margin-bottom: 0.5rem;
+      line-height: 1.8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .colloc-ru {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .colloc-note {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    /* Audio Speaker Icon */
+    .speak-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--accent);
+      padding: 0.2rem;
+      display: inline-flex;
+      align-items: center;
+      vertical-align: middle;
+      font-size: 1.15rem;
+      transition: transform 0.15s;
+    }
+    .speak-btn:hover {
+      transform: scale(1.2);
+      color: var(--accent-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      .arabic-article { font-size: 1.4rem; line-height: 2.2; }
+      .audio-player-banner { flex-direction: column; align-items: stretch; }
+      .player-controls { max-width: 100%; }
+      .toolbar { justify-content: center; }
+      .inspector-bar { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    }
+  
+    /* Reverent styling for the Divine Name (when not in karaoke) */
+    .ar-allah:not(.audio-active) {
+      color: #1b4332 !important;
+      font-weight: 700;
+      text-shadow: 0 0 1px rgba(27, 67, 50, 0.2);
+    }
+    [data-theme="dark"] .ar-allah:not(.audio-active) {
+      color: #52b788 !important;
+      text-shadow: 0 0 2px rgba(82, 183, 136, 0.3);
+    }
+
+    /* User selected word highlighting on click */
+    .ar-word.user-selected {
+      background: rgba(45, 106, 79, 0.25) !important;
+      outline: 2px solid #2d6a4f;
+      border-radius: 4px;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .nav-breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+
+    .nav-link:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Index Portal Styling */
+    .portal-hero {
+      text-align: center;
+      padding: 3rem 1.5rem 2rem;
+      background: linear-gradient(135deg, rgba(27,67,50,0.05) 0%, rgba(201,151,56,0.08) 100%);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .portal-hero h1 {
+      font-family: var(--arabic-font);
+      font-size: 2.75rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      direction: rtl;
+    }
+
+    .portal-hero .subhead {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .portal-hero .desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.6;
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .stat-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.25rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.75rem;
+      margin: 2.5rem 0 4rem;
+    }
+
+    .unit-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .unit-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    }
+
+    .unit-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-light);
+    }
+
+    .unit-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .unit-card-badge {
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: rgba(27,67,50,0.1);
+      color: var(--primary);
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+    }
+
+    [data-theme="dark"] .unit-card-badge {
+      background: rgba(45,106,79,0.3);
+      color: #95d5b2;
+    }
+
+    .unit-card-icon {
+      font-size: 1.85rem;
+    }
+
+    .unit-card-title-ar {
+      font-family: var(--arabic-font);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .unit-card-title-ru {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .unit-card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .unit-card-features {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .unit-feature-pill {
+      font-size: 0.75rem;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      color: var(--text-muted);
+    }
+
+    .unit-card-actions {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .btn-open-unit {
+      flex-grow: 1;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      text-align: center;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s;
+      border: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-open-unit:hover {
+      background: var(--primary-light);
+      color: white;
+      transform: scale(1.02);
+    }
+
+    .btn-preview-audio {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-preview-audio:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Hidden Preview Audio Player -->
+  <audio id="indexAudioPreview" preload="none"></audio>
+
+  <!-- Sticky Top Navigation -->
+  <nav class="top-nav">
+    <div class="nav-breadcrumbs">
+      <span style="font-family:var(--arabic-font); font-size:1.35rem; color:var(--primary); font-weight:bold;">العربية بين يديك</span>
+      <span>•</span>
+      <span style="color:var(--text); font-weight:700;">الكتاب الثالث (الجزء الأول)</span>
+    </div>
+    <div class="nav-controls">
+      <button class="pwa-install-btn" id="pwaInstallBtn" onclick="promptInstallPWA()" title="Установить приложение на устройство">📲 Установить</button>
+      <button class="btn" onclick="toggleTheme()" id="themeBtn" title="Переключить тему">🌓 Тема</button>
+      <select id="fontSelect" class="btn" onchange="changeArabicFont(this.value)" style="cursor:pointer;" title="Шрифт текста">
+        <option value="'Amiri', serif">Шрифт: Amiri</option>
+        <option value="'Scheherazade New', serif">Шрифт: Scheherazade</option>
+        <option value="'Amiri Quran', serif">Шрифт: Amiri Quran</option>
+      </select>
+    </div>
+  </nav>
+
+  <!-- Portal Hero -->
+  <div class="portal-hero">
+    <div class="header-badge" style="margin-bottom:0.75rem;">سِلْسِلَةُ تَعْلِيمِ اللُّغَةِ الْعَرَبِيَّةِ لِغَيْرِ النَّاطِقِينَ بِهَا</div>
+    <h1>الْعَرَبِيَّةُ بَيْنَ يَدَيْك — الْكِتَابُ الثَّالِثُ</h1>
+    <div class="subhead">Интерактивный учебный курс • Полное оглавление (Главы 1–8)</div>
+    <p class="desc">
+      Инновационный интерактивный портал для углубленного изучения арабского языка: полный текст всех глав с огласовками, 
+      профессиональное саудовское озвучивание диктором Хамидом, чтение имени Аллаха шейхом Мухаммадом Сиддиком аль-Миншави, чтение коранических аятов шейхом Махмудом Халилем аль-Хусари, 
+      аутентичные студийные салаваты Пророку ﷺ, пословный интерактивный перевод по наведению и таблицы форм глаголов.
+    </p>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div class="stat-badge">📖 8 Полных учебных глав</div>
+      <div class="stat-badge">🎙️ 48 Озвученных тем и абзацев</div>
+      <div class="stat-badge">⚡ 120+ Глаголов с породами и масдарами</div>
+      <div class="stat-badge">🔊 1000+ Озвученных слов и терминов</div>
+      <div class="stat-badge">✨ 100% Академический чистый фусха</div>
+    </div>
+  </div>
+
+  <!-- Units Grid Container -->
+  <div class="container">
+    <div class="units-grid">
+      
+        <div class="unit-card">
+          <div>
+            <div class="unit-card-header">
+              <span class="unit-card-badge">الوحدة 1 • الدرس 1</span>
+              <span class="unit-card-icon">📖</span>
+            </div>
+            <div class="unit-card-title-ar">الْمُعْجِزَةُ الْخَالِدَةُ</div>
+            <div class="unit-card-title-ru">Вечное чудо</div>
+            <div class="unit-card-desc">Коран как вечное чудо пророческой миссии Мухаммада ﷺ, сравнение с временными чудесами прежних пророков, аспекты неподражаемости Корана (и'джаз), ниспослание через Джибриля, различие мекканских и мединских сур, а также история записи и собирания Корана при праведных халифах Абу Бакре, Умаре и Усмане رضي الله عنهم.</div>
+            
+            <div class="unit-card-features">
+              <span class="unit-feature-pill">📖 6 тематических текстов</span>
+              <span class="unit-feature-pill">⚡ 30 глаголов с породами</span>
+              <span class="unit-feature-pill">💎 9 идиом</span>
+              <span class="unit-feature-pill">📚 25 словарных статей</span>
+              <span class="unit-feature-pill">🎵 Аудио Хамид & аль-Хусари</span>
+            </div>
+          </div>
+
+          <div class="unit-card-actions">
+            <button class="btn-preview-audio" onclick="playIndexPreview('audio/u1_full.mp3?v=husary_v3', this)" title="Слушать превью урока">▶ Аудио</button>
+            <a href="unit1.html" class="btn-open-unit">
+              <span>Изучать главу</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div>
+            <div class="unit-card-header">
+              <span class="unit-card-badge">الوحدة 2 • الدرس 8</span>
+              <span class="unit-card-icon">🌅</span>
+            </div>
+            <div class="unit-card-title-ar">يَوْمٌ فِي حَيَاةِ نَاشِئٍ</div>
+            <div class="unit-card-title-ru">Один день из жизни юноши</div>
+            <div class="unit-card-desc">Распорядок дня мусульманского юноши, утренний подъем, ночная молитва тахаджуд, утренний намаз в мечети, поминания Аллаха (азкар), спорт, прилежание в учебе и труде, благородные манеры, общение с родителями и ранний отход ко сну по сунне Пророка ﷺ.</div>
+            
+            <div class="unit-card-features">
+              <span class="unit-feature-pill">📖 7 тематических текстов</span>
+              <span class="unit-feature-pill">⚡ 14 глаголов с породами</span>
+              <span class="unit-feature-pill">💎 9 идиом</span>
+              <span class="unit-feature-pill">📚 13 словарных статей</span>
+              <span class="unit-feature-pill">🎵 Аудио Хамид & аль-Хусари</span>
+            </div>
+          </div>
+
+          <div class="unit-card-actions">
+            <button class="btn-preview-audio" onclick="playIndexPreview('audio/u2_full.mp3?v=husary_v3', this)" title="Слушать превью урока">▶ Аудио</button>
+            <a href="unit2.html" class="btn-open-unit">
+              <span>Изучать главу</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div>
+            <div class="unit-card-header">
+              <span class="unit-card-badge">الوحدة 3 • الدرس 15</span>
+              <span class="unit-card-icon">🌍</span>
+            </div>
+            <div class="unit-card-title-ar">أَقَلِّيَّاتُنَا فِي الْعَالَمِ</div>
+            <div class="unit-card-title-ru">Наши меньшинства в мире</div>
+            <div class="unit-card-desc">Жизнь мусульманских меньшинств в немусульманских странах: проблемы сохранения веры, отправление обрядов, вопросы семьи, брака и наследования, воспитание и образование детей, преподавание арабского языка, социальная интеграция и сохранение религиозной идентичности.</div>
+            
+            <div class="unit-card-features">
+              <span class="unit-feature-pill">📖 6 тематических текстов</span>
+              <span class="unit-feature-pill">⚡ 14 глаголов с породами</span>
+              <span class="unit-feature-pill">💎 8 идиом</span>
+              <span class="unit-feature-pill">📚 12 словарных статей</span>
+              <span class="unit-feature-pill">🎵 Аудио Хамид & аль-Хусари</span>
+            </div>
+          </div>
+
+          <div class="unit-card-actions">
+            <button class="btn-preview-audio" onclick="playIndexPreview('audio/u3_full.mp3?v=husary_v3', this)" title="Слушать превью урока">▶ Аудио</button>
+            <a href="unit3.html" class="btn-open-unit">
+              <span>Изучать главу</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div>
+            <div class="unit-card-header">
+              <span class="unit-card-badge">الوحدة 4 • الدرس 22</span>
+              <span class="unit-card-icon">📜</span>
+            </div>
+            <div class="unit-card-title-ar">السُّنَّةُ النَّبَوِيَّةُ</div>
+            <div class="unit-card-title-ru">Пророческая Сунна</div>
+            <div class="unit-card-desc">Сунна Пророка ﷺ как второй первоисточник исламского законодательства после Корана: разъяснение коранических предписаний, богодухновенность (откровение от Аллаха), коранические и пророческие доводы об обязательности следования Сунне, зарождение науки отвода и признания передатчиков (джарх ва та'диль) и шедевры кратких пророческих изречений (джавами' аль-калим).</div>
+            
+            <div class="unit-card-features">
+              <span class="unit-feature-pill">📖 7 тематических текстов</span>
+              <span class="unit-feature-pill">⚡ 14 глаголов с породами</span>
+              <span class="unit-feature-pill">💎 7 идиом</span>
+              <span class="unit-feature-pill">📚 12 словарных статей</span>
+              <span class="unit-feature-pill">🎵 Аудио Хамид & аль-Хусари</span>
+            </div>
+          </div>
+
+          <div class="unit-card-actions">
+            <button class="btn-preview-audio" onclick="playIndexPreview('audio/u4_full.mp3?v=husary_v3', this)" title="Слушать превью урока">▶ Аудио</button>
+            <a href="unit4.html" class="btn-open-unit">
+              <span>Изучать главу</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div>
+            <div class="unit-card-header">
+              <span class="unit-card-badge">الوحدة 5 • الدرس 29</span>
+              <span class="unit-card-icon">📚</span>
+            </div>
+            <div class="unit-card-title-ar">الْأَطْفَالُ وَالْقِرَاءَةُ</div>
+            <div class="unit-card-title-ru">Дети и чтение</div>
+            <div class="unit-card-desc">Значение чтения в жизни ребенка и развитии общества, приказ Всевышнего «Читай!», возрастные стадии приобщения детей к книге: от тактильного знакомства и разглядывания картинок до осмысленного чтения, восприятия текста, формирования интеллекта и выбора литературы в гармонии с исламскими ценностями.</div>
+            
+            <div class="unit-card-features">
+              <span class="unit-feature-pill">📖 7 тематических текстов</span>
+              <span class="unit-feature-pill">⚡ 14 глаголов с породами</span>
+              <span class="unit-feature-pill">💎 7 идиом</span>
+              <span class="unit-feature-pill">📚 11 словарных статей</span>
+              <span class="unit-feature-pill">🎵 Аудио Хамид & аль-Хусари</span>
+            </div>
+          </div>
+
+          <div class="unit-card-actions">
+            <button class="btn-preview-audio" onclick="playIndexPreview('audio/u5_full.mp3?v=husary_v3', this)" title="Слушать превью урока">▶ Аудио</button>
+            <a href="unit5.html" class="btn-open-unit">
+              <span>Изучать главу</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div>
+            <div class="unit-card-header">
+              <span class="unit-card-badge">الوحدة 6 • الدرس 36</span>
+              <span class="unit-card-icon">🧠</span>
+            </div>
+            <div class="unit-card-title-ar">هِجْرَةُ الْعُقُولِ</div>
+            <div class="unit-card-title-ru">Утечка умов</div>
+            <div class="unit-card-desc">Феномен эмиграции высококвалифицированных специалистов, ученых, врачей и инженеров из арабских и мусульманских стран на Запад: британская и американская статистика, вклад мусульман в освоение космоса и мировую науку, причины оттока кадров (низкие зарплаты, бюрократия, недостаток лабораторий, политические притеснения) и пути возвращения умов для возрождения родины.</div>
+            
+            <div class="unit-card-features">
+              <span class="unit-feature-pill">📖 6 тематических текстов</span>
+              <span class="unit-feature-pill">⚡ 13 глаголов с породами</span>
+              <span class="unit-feature-pill">💎 7 идиом</span>
+              <span class="unit-feature-pill">📚 8 словарных статей</span>
+              <span class="unit-feature-pill">🎵 Аудио Хамид & аль-Хусари</span>
+            </div>
+          </div>
+
+          <div class="unit-card-actions">
+            <button class="btn-preview-audio" onclick="playIndexPreview('audio/u6_full.mp3?v=husary_v3', this)" title="Слушать превью урока">▶ Аудио</button>
+            <a href="unit6.html" class="btn-open-unit">
+              <span>Изучать главу</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div>
+            <div class="unit-card-header">
+              <span class="unit-card-badge">الوحدة 7 • الدرس 43</span>
+              <span class="unit-card-icon">🌙</span>
+            </div>
+            <div class="unit-card-title-ar">طَابَ نَوْمُكُمْ... طَابَ يَوْمُكُمْ</div>
+            <div class="unit-card-title-ru">Приятного сна... доброго дня</div>
+            <div class="unit-card-desc">Физиология и духовный этикет сна: сон как витальная потребность живых существ, божественное величие Того, Кого не одолевает дремота и сон, физиологическая польза ночного отдыха, сунны пробуждения и омовения рук, вред дневного сна и ночных бдений у молодежи, нормы сна для разных возрастов и медицинские советы по преодолению бессонницы.</div>
+            
+            <div class="unit-card-features">
+              <span class="unit-feature-pill">📖 7 тематических текстов</span>
+              <span class="unit-feature-pill">⚡ 13 глаголов с породами</span>
+              <span class="unit-feature-pill">💎 7 идиом</span>
+              <span class="unit-feature-pill">📚 10 словарных статей</span>
+              <span class="unit-feature-pill">🎵 Аудио Хамид & аль-Хусари</span>
+            </div>
+          </div>
+
+          <div class="unit-card-actions">
+            <button class="btn-preview-audio" onclick="playIndexPreview('audio/u7_full.mp3?v=husary_v3', this)" title="Слушать превью урока">▶ Аудио</button>
+            <a href="unit7.html" class="btn-open-unit">
+              <span>Изучать главу</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="unit-card">
+          <div>
+            <div class="unit-card-header">
+              <span class="unit-card-badge">الوحدة 8 • الدرس 50</span>
+              <span class="unit-card-icon">😄</span>
+            </div>
+            <div class="unit-card-title-ar">نَوَادِرُ وَطُرَفٌ</div>
+            <div class="unit-card-title-ru">Анекдоты и забавные истории</div>
+            <div class="unit-card-desc">Классический арабский юмор, остроумие и народная мудрость в анекдотах и притчах: Имран и его прекрасная жена, незваный гость и поэты при дворе эмира, пословичное тунеядство Усмана ибн Раваха, кулинарная сообразительность Аш'аба, поэт Абу Дулама и халиф аль-Махди, горячая каша в «Книге смышленых» Ибн аль-Джаузи и бессмертные приключения Ходжи Насреддина (Джухи).</div>
+            
+            <div class="unit-card-features">
+              <span class="unit-feature-pill">📖 8 тематических текстов</span>
+              <span class="unit-feature-pill">⚡ 12 глаголов с породами</span>
+              <span class="unit-feature-pill">💎 7 идиом</span>
+              <span class="unit-feature-pill">📚 12 словарных статей</span>
+              <span class="unit-feature-pill">🎵 Аудио Хамид & аль-Хусари</span>
+            </div>
+          </div>
+
+          <div class="unit-card-actions">
+            <button class="btn-preview-audio" onclick="playIndexPreview('audio/u8_full.mp3?v=husary_v3', this)" title="Слушать превью урока">▶ Аудио</button>
+            <a href="unit8.html" class="btn-open-unit">
+              <span>Изучать главу</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme toggle
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      const target = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      localStorage.setItem('site_theme', target);
+      const btn = document.getElementById('themeBtn');
+      if (btn) btn.textContent = target === 'dark' ? '☀️ Светлая' : '🌙 Тёмная';
+    }
+
+    // Restore theme on load
+    const savedTheme = localStorage.getItem('site_theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('themeBtn');
+      if (btn) btn.textContent = savedTheme === 'dark' ? '☀️ Светлая' : '🌙 Тёмная';
+    });
+
+    // Font family change
+    function changeArabicFont(fontFamily) {
+      document.documentElement.style.setProperty('--arabic-font', fontFamily);
+      localStorage.setItem('site_ar_font', fontFamily);
+    }
+
+    const savedFont = localStorage.getItem('site_ar_font');
+    if (savedFont) {
+      document.documentElement.style.setProperty('--arabic-font', savedFont);
+      window.addEventListener('DOMContentLoaded', () => {
+        const select = document.getElementById('fontSelect');
+        if (select) select.value = savedFont;
+      });
+    }
+
+    // Preview audio player
+    let currentPreviewBtn = null;
+    const previewAudio = document.getElementById('indexAudioPreview');
+
+    function playIndexPreview(audioSrc, btn) {
+      if (previewAudio.src.endsWith(audioSrc) && !previewAudio.paused) {
+        previewAudio.pause();
+        btn.textContent = '▶ Аудио';
+        currentPreviewBtn = null;
+      } else {
+        if (currentPreviewBtn) {
+          currentPreviewBtn.textContent = '▶ Аудио';
+        }
+        previewAudio.src = audioSrc;
+        previewAudio.play().then(() => {
+          btn.textContent = '⏸ Пауза';
+          currentPreviewBtn = btn;
+        }).catch(e => console.error(e));
+      }
+    }
+
+    previewAudio.addEventListener('ended', () => {
+      if (currentPreviewBtn) {
+        currentPreviewBtn.textContent = '▶ Аудио';
+        currentPreviewBtn = null;
+      }
+    });
+
+    // PWA Service Worker & Install Prompt
+    let deferredPrompt = null;
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('[PWA] Service Worker registered with scope:', reg.scope))
+          .catch(err => console.log('[PWA] Service Worker registration failed:', err));
+      });
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const btn = document.getElementById('pwaInstallBtn');
+      if (btn) btn.style.display = 'inline-flex';
+    });
+
+    function promptInstallPWA() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            const btn = document.getElementById('pwaInstallBtn');
+            if (btn) btn.style.display = 'none';
+          }
+          deferredPrompt = null;
+        });
+      }
+    }
+  </script>
+</body>
+</html>

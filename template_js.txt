@@ -1,0 +1,672 @@
+<script>
+    // Embedded Audio Map for 100% Reliable Offline Sound (Egyptian Voice ar-EG-ShakirNeural)
+    const WORDS_AUDIO_MAP = {"بَعْدَ أَنْ كَادَتِ": "319b293663.mp3", "هَذِهِ الْآيَةَ": "1c06d890c4.mp3", "أَيَّدَ": "07a7bec578.mp3", "يَنْشَقُّ": "607765fc1e.mp3", "مُنْذِرُونَ": "37f012ed5f.mp3", "صُورَةٌ": "aff1aa48f7.mp3", "بِجَمْعِ الْقُرْآنِ": "834c3ac5a1.mp3", "حُفِظَ": "224b4d5032.mp3", "حَفِظَ": "abe2799354.mp3", "مِنْ": "0457b3622f.mp3", "السُّوَرُ الْمَكِّيَّةُ": "5ec0cb53b1.mp3", "يَذْهَبُ": "4b2c53e56d.mp3", "بِلِسَانٍ": "ba2e72e16d.mp3", "ظَهِيرٌ": "5c43362af3.mp3", "يُنْزِلُ": "b95d8c23a9.mp3", "كُلَّمَا تَقَدَّمَ الْعِلْمُ": "65ddeb9477.mp3", "حِفْظُهُ": "46fd237980.mp3", "أَصْلَحَ": "565221f8ca.mp3", "عَلَيْكَ": "8c6e34f1c6.mp3", "انْشِقَاقُ الْقَمَرِ": "0e837eb9d3.mp3", "خَوْفاً مِنْ": "76b66ecc26.mp3", "الِاخْتِلَافِ": "f7a9a72f4d.mp3", "أَفْئِدَةٌ": "02e653fcb3.mp3", "وَمِنْهَا": "bc3316db76.mp3", "أَوَّلُ جَمْعٍ": "502cf92149.mp3", "اِنْشَقَّ": "c905bc0a56.mp3", "قُلْ": "29508b6481.mp3", "مُرْتَدٌّ": "4a46b19cb6.mp3", "وَحَفِظَ": "dead135c46.mp3", "شُمُولٌ": "6c4d7ed3c4.mp3", "يُرْسِلُ": "bac095e88d.mp3", "مِنْ قَبْلُ": "ff0fde658d.mp3", "تَقَعُ": "d628079ce3.mp3", "ظَهِيرًا": "abfb78b1c2.mp3", "مِنْ قُرَّاءِ الصَّحَابَةِ": "199d83d26c.mp3", "حَيَاتِهِ": "55286dfe15.mp3", "مُبِينٍ": "dae99096a1.mp3", "وَالْحُقُوقِ": "1f9052b66d.mp3", "بَيْنَ الْمُسْلِمِينَ": "e8d1779e96.mp3", "سُبْحَانَهُ": "7b639e53c7.mp3", "مَصَاحِفُ": "257de50512.mp3", "سَلَّمَ": "a305c828c0.mp3", "لَهُمْ": "77c097a342.mp3", "وَأَمَرَ": "deeec99f4e.mp3", "مَعْرِفَةٌ": "4da405d88a.mp3", "مِنْهَا": "bc95118c2d.mp3", "الْمُعْجِزَةُ": "1c6b950a04.mp3", "تَقَدَّمَ": "0e56f15cfa.mp3", "الرُّوحُ الْأَمِينُ": "eef74397ac.mp3", "الشعراء": "8802f8b98c.mp3", "وَعِبَادَاتِهِمْ": "796c84f8ad.mp3", "نُزُولٌ": "00ab7826a6.mp3", "طَوِيلَةً": "76ea415430.mp3", "عِبَرٌ": "8a39b76269.mp3", "وَلِيَكُونَ": "7fe284f54c.mp3", "وَمِنْ أَهَمِّ": "8b8f505128.mp3", "وَالسِّيَاسِيَّةَ": "88e956f302.mp3", "فِتَنٌ": "de49d08008.mp3", "أَرْسَلَ": "ba1337a418.mp3", "مِنْهَا نُسْخَةً": "6ab5c1e614.mp3", "جُمْلَةً وَاحِدَةً": "0c1669a9c5.mp3", "الَّتِي سَلَّمَتْهُ": "f8237b3af2.mp3", "عِنْدَمَا طَلَبَهُ": "d5e5d18f05.mp3", "وَقِصَصِهِمْ": "d17d303f1d.mp3", "قُرَّاءٌ": "14afe4444a.mp3", "جَمْعٌ": "a8292d4a21.mp3", "صُوَرٌ جَدِيدَةٌ": "a60f92b016.mp3", "تَسَرَّبَ": "992622dbfe.mp3", "مُنَجَّماً": "94a518e8b5.mp3", "الْهِجْرَةِ": "78a59aeaf0.mp3", "مَكَّةَ": "9c614a505b.mp3", "فِي السَّنَةِ الثَّانِيَةَ عَشْرَةَ": "5275f50eba.mp3", "كَاتِبٌ": "f8bb6f4700.mp3", "قَلْبِ": "7cb5de2ef6.mp3", "وَقَعَ": "a9561f9124.mp3", "خُرُوجٌ": "837ac86f1e.mp3", "كَوْدٌ": "cb53063634.mp3", "يَخْرُجُ": "a1bc1467a2.mp3", "بِمِثْلِهِ": "5b26d49e6a.mp3", "وَالْجِهَادِ": "5e2191003c.mp3", "اِنْشِقَاقٌ": "eb7ac806e0.mp3", "الذِّكْرَ": "e220d808d7.mp3", "أَنَّ": "f60004903a.mp3", "بِوَاسِطَةِ": "af026b78ed.mp3", "إِلَى الْإِسْلَامِ": "ce083d09a7.mp3", "إِنَّا": "1dbbf00119.mp3", "هُوَ": "056e40079c.mp3", "بَقَاءٌ": "2191865588.mp3", "يُرَتِّلُ": "10495818fa.mp3", "بِذَهَابِ": "f67e1844cb.mp3", "مَوْقِعَةُ الْيَمَامَةِ مَعَ الْمُرْتَدِّينَ": "da269f6a7c.mp3", "عَرَفَ": "fd4e12f431.mp3", "الْقُرْآنِ": "dc41658cd1.mp3", "نَزَّلْنَا": "18eccfd7ff.mp3", "أُخْرَى": "4d28374c6c.mp3", "قَالَ": "987cc311e5.mp3", "لَمْ يَعْرِفْهَا": "5b2e1f5649.mp3", "إِلَى": "1fdea00ced.mp3", "عَقَائِدُ": "419a1622a3.mp3", "يَدُلُّ": "c245b14fea.mp3", "بِهِ": "f80db13b79.mp3", "فَهِيَ": "a79fdecc30.mp3", "بِكِتَابَتِهَا": "382c9cec06.mp3", "خَوْفاً مِنْ تَسَرُّبِ الِاخْتِلَافِ": "1c5a2caf2d.mp3", "هَذَا": "222f6bf216.mp3", "مُصْحَفاً وَاحِداً": "6125b83777.mp3", "رَتَّلَ": "46318005f6.mp3", "تَعَالَى": "a8117a5ced.mp3", "وَعُلَمَائِهِمْ": "b9bd60ace8.mp3", "وَمِنْهُ": "00a104e1cd.mp3", "إِصْبَعٌ": "2c07c64ddc.mp3", "ذَلِكَ": "671c71453e.mp3", "الْقُرْآنُ الْكَرِيمُ": "41bfe735bb.mp3", "ﷺ": "salawat_human.mp3", "أَخْبَارُهَا": "d4263dfcd3.mp3", "وَقَالَ": "c68b2ac91d.mp3", "عَلَى قَلْبِكَ": "ac3162ea89.mp3", "لِلْعِبْرَةِ": "e8aec98c54.mp3", "الرَّسُولِ": "6a06e414c6.mp3", "أَصَابِعُ": "eaaa32cdae.mp3", "وَالْجِنُّ": "e2b243fe05.mp3", "وَكَانَ": "bf6c8821e7.mp3", "وَالنَّاقَةِ": "9f9a6a2a94.mp3", "مُعْجِزٌ": "e2e0eeb470.mp3", "يُدَوِّنُ": "eee7295e98.mp3", "أَمَرَ": "236eac21b8.mp3", "تَرْتِيلٌ": "ab6f305ae4.mp3", "مِنْ أَخْبَارِ": "973c8407da.mp3", "وَكَانَ يَقُولُ": "d6217f0757.mp3", "الْقِيَامَةِ": "6995b44726.mp3", "وَإِنَّا": "ce415a7587.mp3", "نَزَلَ بِهِ": "a662598b40.mp3", "وَلَمَّا تُوُفِّيَ": "2be63963c4.mp3", "مُفَرَّقاً": "6e5aeda9f7.mp3", "مَعَانٍ": "56b0531198.mp3", "ذَهَابٌ": "5a291c1018.mp3", "بِأُسْلُوبِهِ": "e99b01ac9e.mp3", "لِكُلِّ شَيْءٍ": "00f219dc69.mp3", "الْمُصْحَفُ الْإِمَامُ": "31b8dff341.mp3", "ظَهَرَتْ": "455933b9b1.mp3", "سُوَرُهُ": "abe5f888a2.mp3", "لَحَافِظُونَ": "965b3c3c5e.mp3", "إِلَى الْمَدِينَةِ": "67868d8af4.mp3", "مُعْجِزَةٌ": "16478f83cd.mp3", "اسْتَغْرَقَ": "c7ebb65fc7.mp3", "وَالْقُرْآنُ الْمَكِّيُّ": "804cfd2013.mp3", "آيَةٌ": "8a69c6f137.mp3", "إِرْسَالٌ": "114510a46c.mp3", "وَلَمْ يُجْمَعِ": "42ee7f5ab9.mp3", "تَسْلِيمٌ": "836e0685f0.mp3", "فَلَمْ يَسْتَطِيعُوا": "ca5a1b16d3.mp3", "عَلَيْهِمْ": "fc6dd92439.mp3", "ظُهَرَاءُ": "66a74e868c.mp3", "لَفْظٌ": "8cf5614899.mp3", "جَاءَ": "843bffaf2c.mp3", "يَبْقَى": "d4e21be7e1.mp3", "نَحْوَ": "5accfda4f4.mp3", "الْقُرْآنُ الْمَدَنِيُّ": "1255910a50.mp3", "مُصْحَفٌ": "a52be70a76.mp3", "الْكِتَابَ": "4a2e029d0c.mp3", "عُمَرَ بْنِ الْخَطَّابِ": "f9fb61be01.mp3", "تِلْكَ": "18f013e26a.mp3", "دَلَّ": "e84a8fd7e1.mp3", "مَوْضُوعَاتٍ عَدِيدَةً": "1534c31770.mp3", "تِبْيَانًا": "be1cf14122.mp3", "سَبْعُونَ": "365c28ca7c.mp3", "مُدَّةَ": "cc2a0b56d4.mp3", "مَعَ الْمُرْتَدِّينَ": "8790cdddff.mp3", "مِمَّا جَعَلَ": "f251951a3d.mp3", "تَوْحِيدِ اللهِ": "69ac98d29a.mp3", "خُرُوجُ الْمَاءِ مِنْ بَيْنِ أَصَابِعِهِ": "51b488f733.mp3", "وَقَصَصِ الْأَنْبِيَاءِ": "27c3f5cb1e.mp3", "تَحَدٍّ": "c58018615f.mp3", "مَا": "6ed51b77c3.mp3", "ثَبَّتَ": "acc5053f3e.mp3", "حُدُودٌ": "632acfac2d.mp3", "ثُمَّ انْتَقَلَ": "fe94bd6263.mp3", "أَسَالِيبُ": "f209b9038b.mp3", "وَقَدْ تَحَدَّى": "8602a6ebcc.mp3", "حَفْصَةَ": "0432460947.mp3", "عَقَائِدَ النَّاسِ": "2187f81155.mp3", "نُوقٌ": "4dfec0b451.mp3", "إِنْزَالٌ": "819856da79.mp3", "يُثَبِّتُ": "cd087c28ef.mp3", "يَنْزِلُ": "014c3919d0.mp3", "الْقَمَرِ": "f140f7f19f.mp3", "ثُلُثَيِ": "80763d36e2.mp3", "ذَهَبَ": "173d0dd723.mp3", "لَئِنِ": "484d60c33c.mp3", "الَّتِي": "5f5bdb5dbb.mp3", "وَيَوْمِ الْقِيَامَةِ": "c1500f0cb7.mp3", "وَآيَاتُهُ": "b43d8cf750.mp3", "وَتَعَالَى": "7d6835893a.mp3", "الْخَالِدَةُ": "ca0b635c93.mp3", "رَضِيَ اللهُ عَنْهُ": "radiyallahu_anhu.mp3", "ثَلَاثَةٍ وَعِشْرِينَ": "aac93d650c.mp3", "يَسْتَغْرِقُ": "2be80716ab.mp3", "نَاقَةٌ": "c61ff11623.mp3", "اِنْتَقَلَ": "559f14cdfd.mp3", "مُعْجِزَةِ": "2edfc273ef.mp3", "يَظْهَرُ": "94412fa82c.mp3", "وُقُوعٌ": "f381c86ca8.mp3", "حَدٌّ": "cc4310ece2.mp3", "أَبِي بَكْرٍ الصِّدِّيقِ": "d91c7104b3.mp3", "ذَهَبَتْ": "ba81ecd559.mp3", "اِسْتِطَاعَةٌ": "60b18a6f49.mp3", "الْمُعْجِزَاتُ": "7c1d70610c.mp3", "نُسَخٌ": "55fa657ee6.mp3", "تَنَاوُلٌ": "1aacdfc0db.mp3", "وَقُلُوبِ": "6933daba42.mp3", "مِثْلَ": "efe9148b33.mp3", "تَثْبِيتٌ": "7c85313c7f.mp3", "فَرِيضَةٌ": "7d46e989ff.mp3", "صَالِحٍ": "d4fef5f4ff.mp3", "يَأْتُوا": "585a82a05d.mp3", "صُوَرِ": "4198c85ec1.mp3", "دَلَالَةٌ": "0d92d8ab89.mp3", "وَغَيْرِ ذَلِكَ": "e5c6e2ad23.mp3", "مَوْقِعَةِ الْيَمَامَةِ": "1a306f7d11.mp3", "إِلَى كُلِّ بَلَدٍ": "0aa49e9021.mp3", "بَقِيَ": "f793568557.mp3", "مُعْجِزَةُ": "40e40c7cf8.mp3", "كَفَرُوا": "f405b33332.mp3", "الْأُمَمِ السَّابِقَةِ": "e5fb9ed69a.mp3", "نَزَلَتْ": "4af358bee1.mp3", "وَالْجِنَّ": "2a5c59aca1.mp3", "فُؤَادَكَ": "e3df86d030.mp3", "لِلرَّسُولِ": "30ef4094ce.mp3", "اِسْتِغْرَاقٌ": "6b2137c86c.mp3", "هَذَا الْإِعْجَازِ": "f5ae47f831.mp3", "خَارِجَ": "a508dae957.mp3", "مَدَنِيٌّ": "68c7a08751.mp3", "وَلَوْ كَانَ": "29c5b443bf.mp3", "بَعْضُهُمْ": "43345ae45f.mp3", "وَكَانَتْ كُلَّمَا": "e661f7a0d0.mp3", "عَلَيْهِ": "7803f72894.mp3", "مَعْنًى": "bd6ddc6f67.mp3", "لَهُ": "c338d974eb.mp3", "الْحَوَادِثِ": "858f90b7c5.mp3", "بِكَثِيرٍ": "7e8754e0ac.mp3", "وَقَدْ تَنَاوَلَ": "6b18e586d0.mp3", "وَمَعَانِيهِ": "731bb1485e.mp3", "فَجَاءَتْ": "c85fbfac4d.mp3", "حِفْظَهَا": "a255b0eb59.mp3", "مُوسَى": "913048ff33.mp3", "عَرَبِيٍّ": "d747397169.mp3", "السَّابِقِينَ": "be60fe0f26.mp3", "هَذَا الْمُصْحَفُ": "296217782d.mp3", "وَلَوْ كَانَ بَعْضُهُمْ لِبَعْضٍ ظَهِيرًا": "487ca497d5.mp3", "كَادَ": "49c3b6184f.mp3", "الْفِتْنَةُ": "8b89aafead.mp3", "مِنْهُ": "df323df672.mp3", "قَبْلَهُ": "7eb43a9ed4.mp3", "فَرَائِضُ": "24298b602e.mp3", "مِنَ الْقُرْآنِ": "471ac6a0a7.mp3", "يَكْتُبُونَ": "d4b02deee5.mp3", "وَنَزَّلْنَا": "0a19a582f1.mp3", "الْقُرْآنَ": "d6d05e7294.mp3", "مَا هُوَ": "f7d8b71403.mp3", "لِنُثَبِّتَ": "94825e28b9.mp3", "عِصِيٌّ": "6e62351b77.mp3", "رَضِيَ اللهُ عَنْهَا": "1164193a38.mp3", "حِفْظٌ": "519c6c7f34.mp3", "لَا يَأْتُونَ": "339321af93.mp3", "لِلْهِجْرَةِ": "03cad9fc4a.mp3", "ثُمَّ دُوِّنَ": "cca903ee3a.mp3", "أَصَابِعِهِ": "a28979696c.mp3", "يَعْرِفُ": "9929fa1b15.mp3", "مُرْتَدُّونَ": "be3cb5cd98.mp3", "فِي مُصْحَفٍ وَاحِدٍ": "cab475189b.mp3", "كَالْعَصَا": "f95a27d318.mp3", "وَيَبْلُغُ": "de2bdc290d.mp3", "فِي الْغَزَوَاتِ": "b8f52bfc95.mp3", "اجْتَمَعَتِ": "e3eef14107.mp3", "كَمَا شَمِلَ": "0c53398792.mp3", "فِيهِمْ": "4632fa576f.mp3", "إِلَى مَا بَيْنَ أَيْدِي النَّاسِ": "51182d1fe9.mp3", "مُنَجَّماً (مُفَرَّقاً)": "2e892a263d.mp3", "كَمَا أَنَّ": "ea4fe5bb47.mp3", "قَدْراً كَبِيراً": "ac2f678512.mp3", "وَالْحِكْمَةُ": "ebbf6d7af2.mp3", "عُثْمَانَ": "4b9da818d2.mp3", "أَمْرٌ": "f3fa147682.mp3", "الَّذِينَ": "86f7727932.mp3", "لِلرُّسُلِ": "da8f5010fc.mp3", "الْقُرْآنُ": "6f1b70f89d.mp3", "انْشِقَاقُ": "94189107e3.mp3", "عَقِيدَةٌ": "f95db3df32.mp3", "ظُهُورٌ": "c658922a4d.mp3", "لِتَكُونَ": "a5ce0946e3.mp3", "بِكِتَابَةِ نُسَخٍ": "a3214f50a8.mp3", "يَتَحَدَّى": "2962260143.mp3", "الَّذِي أَمَرَ": "2b46928709.mp3", "مَكِّيٌّ": "63173167e2.mp3", "مُنْذِرٌ": "6cd3819f26.mp3", "أَوِ الْآيَاتِ": "0c09203ae2.mp3", "أَوْ آيَاتٌ": "2e7c1be443.mp3", "بَقِيَتْ أَخْبَارُهَا لِلْعِبْرَةِ": "9759673808.mp3", "قِصَصٌ": "69dace0485.mp3", "مَنْ": "cbbf08dfc0.mp3", "عِنْدَ أَبِي بَكْرٍ": "1a639d21be.mp3", "مِنَ الْمَصَاحِفِ": "740158c6d6.mp3", "تَقَدُّمٌ": "ce58af1685.mp3", "مُعْجِزَاتٌ": "ad7f12903a.mp3", "مِنَ الْمُنْذِرِينَ": "8cea5c5227.mp3", "قَارِئٌ": "b8fef8339f.mp3", "أُمَمٌ": "ca728186a1.mp3", "الْعِلْمُ": "e7860c1905.mp3", "أُسْلُوبٌ": "5da0baa6f7.mp3", "غَزْوَةٌ": "00f638b053.mp3", "وَالْحُدُودِ": "95d8f6f2e2.mp3", "حَسَبَ": "b24fe2dd70.mp3", "وَخُرُوجُ": "cae540422d.mp3", "تَسَرُّبٌ": "a5be5a00ea.mp3", "كَادَتِ الْفِتْنَةُ تَقَعُ": "b5e45c1821.mp3", "غَزَوَاتٌ": "4da9341f4a.mp3", "عَلَيْهِ السَّلَامُ": "b963eab5a9.mp3", "اِسْتَطَاعَ": "c5b4b2e5c1.mp3", "الْفَرَائِضِ": "31522ee5a8.mp3", "الِاجْتِمَاعِيَّةَ": "3ded94c887.mp3", "يَأْمُرُ": "079d64dd4c.mp3", "وَهِيَ": "7364c05c67.mp3", "شَمِلَ": "45b4473a9a.mp3", "سَهْلاً": "1947dc208f.mp3", "حَادِثَةٌ": "a62d1b5faa.mp3", "وَأَلْفَاظِهِ": "8dba71ac67.mp3", "جَاءَتِ": "9ec3ebaa4e.mp3", "عِنْدَ ابْنَتِهِ": "7533efb780.mp3", "إِعْجَازِ": "8eeffca57c.mp3", "أَمَّا": "359cdf712c.mp3", "تَدْوِينٌ": "ac385b8cbe.mp3", "وَالْمَعَارِفِ": "b762fc7f25.mp3", "تَحَدَّى": "01bfd6920c.mp3", "نَحْنُ": "811e0553fa.mp3", "بُلُوغٌ": "25c56e4aa2.mp3", "يَسْتَطِيعُ": "448e36b151.mp3", "وَبَقِيَ": "ae7d353773.mp3", "الإسراء": "b8741b1441.mp3", "الْمَاءِ": "e974f4db9d.mp3", "نَزَلَ": "01f13fcb6b.mp3", "هُنَاكَ": "a3ea6c5c0a.mp3", "الحجر": "f7b2ca0b8e.mp3", "إِلَى الْخَلِيفَةِ": "4db86436a9.mp3", "بَعْدَ": "7a4d66b690.mp3", "الْمُسْلِمِينَ": "44d242dc25.mp3", "فِتْنَةٌ": "a2889ecb82.mp3", "أُمَّةٌ": "c256ebc8f5.mp3", "فَهُوَ": "c5ced68eb9.mp3", "فِي حَيَاةِ": "5a8ca18063.mp3", "دَوَّنَ": "ad14734f1f.mp3", "يَبْلُغُ": "645ead4071.mp3", "وَقَدْ": "85829a4925.mp3", "وَحَيَاتَهُمُ": "6920649205.mp3", "تَثْبِيتُ": "26fe52636e.mp3", "أَنْزَلَ": "501187dcde.mp3", "تَثْبِيتُ قَلْبِ الرَّسُولِ": "c3a940889c.mp3", "وَإِنْ كَانَ": "6f6124f381.mp3", "عَاماً": "98244e289a.mp3", "تَنَاوَلَ": "66b98c6dc6.mp3", "عِنْدَهُ": "9ae07724cc.mp3", "هَذَا الْإِعْجَازَ": "1f9f936683.mp3", "فِي عَهْدِ": "fdd3a5dabe.mp3", "الْقُرْآنُ الْمَكِّيُّ": "5d2aa5e1c2.mp3", "الفرقان": "17a7b042c3.mp3", "كَمَا جَاءَ": "2cd1e14011.mp3", "إِعْجَازُ": "276f06c0e9.mp3", "أَمَرَهُمْ": "8978abf373.mp3", "يَشْمَلُ": "62a3389555.mp3", "جَمَعَ": "f4689c2119.mp3", "يُسَلِّمُ": "26f87c5a24.mp3", "تَأْيِيدٌ": "d2c7ff613b.mp3", "قِصَّةٌ": "aba598af0c.mp3", "يَنْتَقِلُ": "7db56464b4.mp3", "وَكُلَّمَا": "dfc64dfd89.mp3", "الْإِنْسَ": "152dbb5538.mp3", "تَدُلُّ": "41bb1e3bf5.mp3", "أَنْزَلَهُ": "ca8977b2ba.mp3", "إِلَى يَوْمِ الْقِيَامَةِ": "db5ff01b99.mp3", "الَّتِي قُتِلَ فِيهَا": "905c506844.mp3", "يَتَسَرَّبُ": "891321edd8.mp3", "الْإِنْسُ": "d9e2adde61.mp3", "عَلَى أَنْ": "fad24c7a90.mp3", "نُزِّلَ": "133ce645cb.mp3", "أُمُوراً كَثِيرَةً": "a9aba2367b.mp3", "عُثْمَانَ بْنِ عَفَّانَ": "85932a9c49.mp3", "أَمَّا الْقُرْآنُ الْمَدَنِيُّ": "88a1b7b8b9.mp3", "نُسْخَةٌ": "9897d1b8f6.mp3", "عِبْرَةٌ": "d518dd83a6.mp3", "الْخَلِيفَةِ الْأَوَّلِ": "99f938b931.mp3", "جِبْرِيلَ": "960f6d8e93.mp3", "بَلَغَ": "3fff030bed.mp3", "يَكَادُ": "000bf02c54.mp3", "يَتَنَاوَلُ": "cf650481f6.mp3", "جُمْلَةً": "ba4fb5671c.mp3", "نُزُولُ": "0770fd824b.mp3", "كَانَتْ": "c7553055ab.mp3", "عَلَيْهِمُ السَّلَامُ": "fec53374fb.mp3", "اِنْتِقَالٌ": "0dd37151df.mp3", "حَوَادِثُ": "04bafa955e.mp3", "عَصًا": "68598725d2.mp3", "فِي الْغَالِبِ": "3b3694cc41.mp3", "دَاخِلَ": "fa43a38b1b.mp3", "قَصِيرَةً": "19ab9d1bb7.mp3", "وَالِاقْتِصَادِيَّةَ": "315492d1c8.mp3", "قَبْلَ": "34f9ef54de.mp3", "مِنَ الْعُلُومِ": "d517b80f41.mp3", "لَوْلَا": "2a65570dca.mp3", "لِلْقُرْآنِ": "5bfb30478d.mp3", "اللهُ": "h_allah_damma.mp3", "يُؤَيِّدُ": "220034283d.mp3", "كُتَّابٌ": "b86324c09a.mp3", "عَلَى": "56774bf67c.mp3", "إِصْلَاحٌ": "1a4f6f9ba4.mp3", "يَحْفَظُ": "9e4684e61d.mp3", "يُصْلِحُ": "e3ad4fcdea.mp3", "وَبَقِيَتْ": "9fd0657421.mp3", "وَالدَّعْوَةِ": "d7a0640c6d.mp3", "فِي سُورَةِ كَذَا": "663e3b6390.mp3", "يَتَقَدَّمُ": "d264d4e919.mp3", "فُؤَادٌ": "c85c98bf44.mp3", "أَلْفَاظٌ": "dece31aaf9.mp3", "بِمَا يُصْلِحُ": "c52faa8703.mp3", "وَرَتَّلْنَاهُ": "8260740d91.mp3", "نُزُولُهُ": "5d5c7fcd9a.mp3", "وَالرُّسُلِ": "08d28a6ebc.mp3", "خَرَجَ": "ceeb1997cf.mp3", "تُؤَيِّدُ": "a921b8d61f.mp3", "عَلَى الرَّسُولِ": "f0594df0bd.mp3", "كَذَلِكَ": "c54be4a8bf.mp3", "النَّاسُ": "d7b3d8042d.mp3", "بَاقِيَةٌ": "fe952f996a.mp3", "تَسَرُّبِ": "4cd74eaee0.mp3", "النحل": "22c8ca5648.mp3", "وَاحِدَةً": "431610fc01.mp3", "بِلِسَانٍ عَرَبِيٍّ مُبِينٍ": "52b706c2e8.mp3", "بِمِثْلِ": "2b19e274c9.mp3", "يَجْمَعُ": "b9705554fd.mp3", "يَقَعُ": "8369d5f34b.mp3", "تَرْتِيلًا": "e7b569b296.mp3", "ضَعُوا": "2e3259b364.mp3", "ظَهَرَ": "203d816cc6.mp3", "الْقُرْآنِ الْكَرِيمِ": "7612146523.mp3", "كَمَا": "effd6ff843.mp3", "بَيْنِ": "26b06aa634.mp3", "لِيَأْتُوا": "20a400da2d.mp3", "لِبَعْضٍ": "53820848d4.mp3", "صُوَرٌ": "57f0484687.mp3", "يَوْمِ": "735791f220.mp3", "مَوْضُوعَاتٍ جَدِيدَةً": "1454b9b8bc.mp3", "صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ": "salawat_human.mp3", "صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ": "salawat_human.mp3", "الله": "h_allah_damma.mp3", "اللَّهُ": "h_allah_damma.mp3", "اللهِ": "h_allah_kasra.mp3", "اللَّهِ": "h_allah_kasra.mp3", "اللهَ": "h_allah_fatha.mp3", "اللَّهَ": "h_allah_fatha.mp3", "رَضِيَ اللَّهُ عَنْهُ": "radiyallahu_anhu.mp3"};
+
+    let wordAudioPlayer = null;
+    let currentSelectedWord = "الْقُرْآنُ";
+
+    function cleanWordLookup(text) {
+      if (!text) return '';
+      return text.replace(/[\u060C\u061B\u061F\u06D4.,:;()[\]{}«»"'—!؟?،ـ]/g, '').trim();
+    }
+
+    function selectWord(el, rawWord, trans) {
+      document.querySelectorAll('.ar-word.user-selected').forEach(w => w.classList.remove('user-selected'));
+      if (el) el.classList.add('user-selected');
+
+      const clean = cleanWordLookup(rawWord);
+      const fullVocalized = (el && el.getAttribute('data-tashkeel')) ? el.getAttribute('data-tashkeel') : rawWord;
+      if (inspAr) inspAr.textContent = fullVocalized;
+      if (inspRu) inspRu.textContent = trans || (el ? el.getAttribute('data-trans') : '') || '—';
+      currentSelectedWord = clean || rawWord;
+
+      if (inspBar) inspBar.style.transform = 'translateY(0)';
+
+      playWordAudio(rawWord);
+    }
+
+    function playWordAudio(rawWord) {
+      if (!rawWord) return;
+      const word = rawWord.trim();
+      const cleaned = cleanWordLookup(word);
+
+      let file = null;
+
+      // 1. Direct check for Salawat
+      if (word === 'ﷺ' || cleaned === 'ﷺ' || word.includes('ﷺ') || word.includes('صَلَّى') || cleaned.includes('صلى')) {
+        file = 'salawat_human.mp3';
+      }
+      // 2. Direct check for Radiyallahu anhu / anha
+      else if (word.includes('عَنْهَا') && (word.includes('رَضِيَ') || word.includes('رضي'))) {
+        file = 'radiyallahu_anha.mp3';
+      } else if (word.includes('عَنْهُ') && (word.includes('رَضِيَ') || word.includes('رضي'))) {
+        file = 'radiyallahu_anhu.mp3';
+      }
+      // 3. Direct check for Allah (recited by Sheikh Mahmoud Khalil Al-Husary)
+      else if (cleaned.replace(/[\u064B-\u065F\u0670\u0671]/g, '').replace(/[ٱإأآ]/g, 'ا') === 'الله') {
+        if (cleaned.includes('ِ') || word.includes('ِ') || word.includes('هِ')) {
+          file = 'h_allah_kasra.mp3';
+        } else if (cleaned.includes('ُ') || word.includes('ُ') || word.includes('هُ')) {
+          file = 'h_allah_damma.mp3';
+        } else if (cleaned.endsWith('َ') || word.includes('هَ')) {
+          file = 'h_allah_fatha.mp3';
+        } else {
+          file = 'h_allah_damma.mp3';
+        }
+      }
+      // 4. General dictionary lookup
+      else {
+        file = WORDS_AUDIO_MAP[word] || WORDS_AUDIO_MAP[cleaned];
+      }
+
+      if (file) {
+        if (wordAudioPlayer) {
+          wordAudioPlayer.pause();
+        }
+        wordAudioPlayer = new Audio('audio/words/' + file);
+        wordAudioPlayer.play().catch(e => {
+          wordAudioPlayer = new Audio('audio/' + file);
+          wordAudioPlayer.play().catch(err => console.log('Audio error:', err));
+        });
+      } else {
+        // Web Speech Fallback if available
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          const utterance = new SpeechSynthesisUtterance(cleaned || word);
+          utterance.lang = 'ar-SA';
+          utterance.rate = 0.85;
+          window.speechSynthesis.speak(utterance);
+        }
+      }
+    }
+
+    function speakCurrentWord() {
+      playWordAudio(currentSelectedWord);
+    }
+
+    // Quran Ayah Reciter Audio Logic (Sheikh Mahmoud Khalil Al-Husary)
+    let currentQuranAudio = null;
+    let currentQuranBtn = null;
+
+    function playQuranAyah(audioSrc, btn) {
+      stopParagraphAudio();
+      if (!audioMaster.paused) {
+        audioMaster.pause();
+        masterPlayBtn.textContent = '▶';
+      }
+
+      const quranInline = btn ? btn.closest('.quran-inline') : null;
+
+      if (currentQuranAudio && !currentQuranAudio.paused) {
+        currentQuranAudio.pause();
+        if (currentQuranBtn) {
+          currentQuranBtn.textContent = '▶ аль-Хусари';
+          currentQuranBtn.classList.remove('playing');
+          const prevInline = currentQuranBtn.closest('.quran-inline');
+          if (prevInline) prevInline.classList.remove('audio-active');
+        }
+        if (currentQuranAudio.src.endsWith(audioSrc)) {
+          currentQuranAudio = null;
+          currentQuranBtn = null;
+          return;
+        }
+      }
+
+      currentQuranAudio = new Audio(audioSrc);
+      currentQuranBtn = btn;
+      btn.textContent = '⏸ Пауза';
+      btn.classList.add('playing');
+      if (quranInline) quranInline.classList.add('audio-active');
+
+      currentQuranAudio.play().catch(e => console.log('Quran audio play error:', e));
+
+      currentQuranAudio.onended = () => {
+        btn.textContent = '▶ аль-Хусари';
+        btn.classList.remove('playing');
+        if (quranInline) quranInline.classList.remove('audio-active');
+        currentQuranAudio = null;
+        currentQuranBtn = null;
+      };
+    }
+
+    // Master Audio Player Logic
+    const audioMaster = document.getElementById('audioMaster');
+    const masterPlayBtn = document.getElementById('masterPlayBtn');
+    const masterProgressBar = document.getElementById('masterProgressBar');
+    const masterProgressFill = document.getElementById('masterProgressFill');
+    const masterTimeDisplay = document.getElementById('masterTimeDisplay');
+    
+    let activeParagraphAudio = null;
+    let activeParaNum = null;
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return '0:00';
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return `${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    audioMaster.addEventListener('timeupdate', () => {
+      if (audioMaster.duration) {
+        const pct = (audioMaster.currentTime / audioMaster.duration) * 100;
+        masterProgressFill.style.width = pct + '%';
+        masterTimeDisplay.textContent = `${formatTime(audioMaster.currentTime)} / ${formatTime(audioMaster.duration)}`;
+      }
+    });
+
+    audioMaster.addEventListener('loadedmetadata', () => {
+      masterTimeDisplay.textContent = `0:00 / ${formatTime(audioMaster.duration)}`;
+    });
+
+    audioMaster.addEventListener('ended', () => {
+      masterPlayBtn.textContent = '▶';
+      masterProgressFill.style.width = '0%';
+    });
+
+    function toggleMasterAudio() {
+      stopParagraphAudio();
+      if (currentQuranAudio) {
+        currentQuranAudio.pause();
+        if (currentQuranBtn) {
+          currentQuranBtn.textContent = '▶ аль-Хусари';
+          currentQuranBtn.classList.remove('playing');
+        }
+      }
+
+      if (audioMaster.paused) {
+        audioMaster.play();
+        masterPlayBtn.textContent = '⏸';
+      } else {
+        audioMaster.pause();
+        masterPlayBtn.textContent = '▶';
+      }
+    }
+
+    function seekMasterAudio(e) {
+      const rect = masterProgressBar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = clickX / rect.width;
+      audioMaster.currentTime = pct * audioMaster.duration;
+    }
+
+    function seekAudio(seconds) {
+      if (activeParagraphAudio && !activeParagraphAudio.paused) {
+        activeParagraphAudio.currentTime = Math.max(0, activeParagraphAudio.currentTime + seconds);
+      } else {
+        audioMaster.currentTime = Math.max(0, audioMaster.currentTime + seconds);
+      }
+    }
+
+    function changePlaybackRate(rate) {
+      const val = parseFloat(rate);
+      audioMaster.playbackRate = val;
+      document.querySelectorAll('audio[id^="audioPara"]').forEach(a => {
+        a.playbackRate = val;
+      });
+    }
+
+    // Paragraph Audio Player
+    let syncTimer = null;
+
+    function clearActiveWords() {
+      document.querySelectorAll('.ar-word.audio-active').forEach(w => w.classList.remove('audio-active'));
+      document.querySelectorAll('.quran-inline.audio-active').forEach(q => q.classList.remove('audio-active'));
+    }
+
+    function stopParagraphAudio() {
+      if (syncTimer) {
+        clearInterval(syncTimer);
+        syncTimer = null;
+      }
+      if (activeParaNum) {
+        const prevAudio = document.getElementById('audioPara' + activeParaNum);
+        const prevBtn = document.getElementById('btnPlayPara' + activeParaNum);
+        const prevArticle = document.getElementById('p-' + activeParaNum);
+        const prevCard = prevArticle ? prevArticle.closest('.para-card') : null;
+        if (prevAudio) {
+          prevAudio.pause();
+          prevAudio.ontimeupdate = null;
+        }
+        if (prevBtn) {
+          const icon = prevBtn.querySelector('.play-icon');
+          const txt = prevBtn.querySelector('.play-text');
+          if (icon) icon.textContent = '▶';
+          if (txt) txt.textContent = 'Слушать абзац';
+          prevBtn.classList.remove('playing');
+        }
+        if (prevCard) prevCard.classList.remove('playing');
+        clearActiveWords();
+      }
+      activeParagraphAudio = null;
+      activeParaNum = null;
+    }
+
+    function playParagraphAudio(num) {
+      toggleParaAudio(num);
+    }
+
+    function toggleParaAudio(num) {
+      if (!audioMaster.paused) {
+        audioMaster.pause();
+        masterPlayBtn.textContent = '▶';
+      }
+      if (currentQuranAudio) {
+        currentQuranAudio.pause();
+        if (currentQuranBtn) {
+          currentQuranBtn.textContent = '▶ аль-Хусари';
+          currentQuranBtn.classList.remove('playing');
+        }
+      }
+
+      const paraAudio = document.getElementById('audioPara' + num);
+      const btn = document.getElementById('btnPlayPara' + num);
+      const articleEl = document.getElementById('p-' + num);
+      const card = articleEl ? articleEl.closest('.para-card') : null;
+
+      if (!paraAudio) return;
+
+      if (activeParaNum === num && !paraAudio.paused) {
+        paraAudio.pause();
+        if (syncTimer) {
+          clearInterval(syncTimer);
+          syncTimer = null;
+        }
+        if (btn) {
+          const icon = btn.querySelector('.play-icon');
+          const txt = btn.querySelector('.play-text');
+          if (icon) icon.textContent = '▶';
+          if (txt) txt.textContent = 'Слушать абзац';
+          btn.classList.remove('playing');
+        }
+        if (card) card.classList.remove('playing');
+        clearActiveWords();
+        activeParagraphAudio = null;
+        activeParaNum = null;
+        return;
+      }
+
+      stopParagraphAudio();
+
+      paraAudio.currentTime = 0;
+      paraAudio.playbackRate = audioMaster.playbackRate || 1.0;
+
+      const paraTimecodes = (typeof UNIT_TIMECODES !== 'undefined' && UNIT_TIMECODES[num]) ? UNIT_TIMECODES[num] : null;
+
+      function syncKaraoke() {
+        if (!paraAudio || paraAudio.paused) return;
+        const curMs = paraAudio.currentTime * 1000;
+        const art = document.getElementById('p-' + num);
+        if (!art) return;
+        const words = art.querySelectorAll('.ar-word');
+        const quranEls = art.querySelectorAll('.quran-inline');
+        if (words.length === 0 && quranEls.length === 0) return;
+
+        // Accurate audio-karaoke synchronization with latency compensation:
+        // Neural TTS phoneme planning mark + audio output buffer delay ≈ 180ms lead time.
+        // Offsetting effectiveMs aligns the visual highlight with the physical sound arriving at the ear.
+        const syncOffsetMs = parseInt(localStorage.getItem('site_karaoke_offset') || '180', 10);
+        const effectiveMs = Math.max(0, curMs - (syncOffsetMs * (paraAudio.playbackRate || 1.0)));
+
+        if (paraTimecodes && paraTimecodes.length > 0) {
+          let matchedWordIdx = -1;
+          let matchedQuranIdx = -1;
+
+          for (let i = 0; i < paraTimecodes.length; i++) {
+            const tc = paraTimecodes[i];
+            const nextTc = (i < paraTimecodes.length - 1) ? paraTimecodes[i + 1] : null;
+            // Allow a graceful hold of up to 100ms or until the next item starts
+            const maxHoldMs = nextTc ? Math.min(tc.endMs + 100, nextTc.startMs) : tc.endMs + 100;
+
+            if (effectiveMs >= tc.startMs && effectiveMs <= maxHoldMs) {
+              if (tc.isQuran) {
+                matchedQuranIdx = tc.quranIndex !== undefined ? tc.quranIndex : 0;
+              } else {
+                matchedWordIdx = tc.wordIndex;
+              }
+              break;
+            }
+          }
+
+          if (matchedQuranIdx >= 0) {
+            // Quran ayah is reciting: illuminate Quran verse badge and clear regular word highlights
+            words.forEach(w => w.classList.remove('audio-active'));
+            let activeQuran = art.querySelector(`.quran-inline[data-quran-idx="${matchedQuranIdx}"]`);
+            if (!activeQuran && matchedQuranIdx < quranEls.length) {
+              activeQuran = quranEls[matchedQuranIdx];
+            }
+            quranEls.forEach(q => {
+              if (q === activeQuran) {
+                if (!q.classList.contains('audio-active')) {
+                  q.classList.add('audio-active');
+                  q.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+                }
+              } else {
+                q.classList.remove('audio-active');
+              }
+            });
+          } else if (matchedWordIdx >= 0) {
+            // Regular word is being spoken: highlight word and clear Quran verse highlight
+            quranEls.forEach(q => q.classList.remove('audio-active'));
+            let activeEl = art.querySelector(`.ar-word[data-idx="${matchedWordIdx}"]`);
+            if (!activeEl && matchedWordIdx < words.length) {
+              activeEl = words[matchedWordIdx];
+            }
+            words.forEach(w => {
+              if (w === activeEl) {
+                if (!w.classList.contains('audio-active')) {
+                  w.classList.add('audio-active');
+                  w.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+                }
+              } else {
+                w.classList.remove('audio-active');
+              }
+            });
+          } else {
+            // In pause or silence between sentences/quotes
+            words.forEach(w => w.classList.remove('audio-active'));
+            quranEls.forEach(q => q.classList.remove('audio-active'));
+          }
+        } else {
+          // Linear fallback
+          const pct = paraAudio.currentTime / (paraAudio.duration || 1);
+          const currentIdx = Math.min(words.length - 1, Math.floor(pct * words.length));
+          words.forEach((w, idx) => {
+            if (idx === currentIdx) {
+              w.classList.add('audio-active');
+            } else {
+              w.classList.remove('audio-active');
+            }
+          });
+        }
+      }
+
+      paraAudio.ontimeupdate = syncKaraoke;
+
+      paraAudio.play().then(() => {
+        if (btn) {
+          const icon = btn.querySelector('.play-icon');
+          const txt = btn.querySelector('.play-text');
+          if (icon) icon.textContent = '⏸';
+          if (txt) txt.textContent = 'Пауза';
+          btn.classList.add('playing');
+        }
+        if (card) card.classList.add('playing');
+        activeParagraphAudio = paraAudio;
+        activeParaNum = num;
+        syncTimer = setInterval(syncKaraoke, 20);
+      }).catch(e => console.error('Audio play error:', e));
+
+      paraAudio.onended = () => {
+        if (syncTimer) {
+          clearInterval(syncTimer);
+          syncTimer = null;
+        }
+        if (btn) {
+          const icon = btn.querySelector('.play-icon');
+          const txt = btn.querySelector('.play-text');
+          if (icon) icon.textContent = '▶';
+          if (txt) txt.textContent = 'Слушать абзац';
+          btn.classList.remove('playing');
+        }
+        if (card) card.classList.remove('playing');
+        clearActiveWords();
+        activeParagraphAudio = null;
+        activeParaNum = null;
+      };
+    }
+
+    // Tooltip and Inspector logic
+    const tooltip = document.getElementById('tooltip');
+    const inspBar = document.getElementById('inspectorBar');
+    const inspAr = document.getElementById('inspAr');
+    const inspRu = document.getElementById('inspRu');
+
+    const words = document.querySelectorAll('.ar-word');
+
+    words.forEach(word => {
+      word.addEventListener('mouseenter', (e) => {
+        const trans = word.getAttribute('data-trans') || '';
+        
+        if (trans) {
+          tooltip.textContent = trans;
+          tooltip.style.display = 'block';
+          
+          const rect = word.getBoundingClientRect();
+          let left = (rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2));
+          if (left < 10) left = 10;
+          if (left + tooltip.offsetWidth > window.innerWidth - 10) {
+            left = Math.max(10, window.innerWidth - tooltip.offsetWidth - 10);
+          }
+          tooltip.style.left = left + 'px';
+          tooltip.style.top = Math.max(10, (rect.top + window.scrollY - tooltip.offsetHeight - 8)) + 'px';
+        }
+
+        const vocalized = word.getAttribute('data-tashkeel') || word.textContent.trim();
+        inspAr.textContent = vocalized;
+        inspRu.textContent = trans || '—';
+        currentSelectedWord = vocalized;
+      });
+
+      word.addEventListener('mouseleave', () => {
+        tooltip.style.display = 'none';
+      });
+
+      word.addEventListener('click', (e) => {
+        const text = word.getAttribute('data-tashkeel') || word.textContent.trim();
+        const trans = word.getAttribute('data-trans') || '';
+        selectWord(word, text, trans);
+      });
+    });
+
+    function hideInspector() {
+      inspBar.style.transform = 'translateY(100%)';
+    }
+
+    function copyParagraph(num) {
+      const p = document.getElementById('p-' + num);
+      if (p) {
+        navigator.clipboard.writeText(p.innerText).then(() => {
+          alert('Текст абзаца ' + num + ' скопирован в буфер обмена!');
+        });
+      }
+    }
+
+    // Tabs Switcher
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      
+      document.getElementById(tabId).style.display = 'block';
+      event.currentTarget.classList.add('active');
+    }
+
+    // Font family change (Amiri, Scheherazade New, Amiri Quran)
+    function changeArabicFont(fontFamily) {
+      if (!fontFamily) return;
+      document.documentElement.style.setProperty('--arabic-font', fontFamily);
+      document.querySelectorAll('.arabic-article, .ar-word, .arabic-title, .para-title, .verb-ar, .vocab-ar, .inspector-ar').forEach(el => {
+        el.style.fontFamily = fontFamily;
+      });
+      localStorage.setItem('site_ar_font', fontFamily);
+      const sel = document.getElementById('fontSelect');
+      if (sel) sel.value = fontFamily;
+    }
+
+    // Font size control
+    let currentFontSizeRem = parseFloat(localStorage.getItem('site_font_size')) || 1.65;
+
+    function applyFontSize() {
+      document.querySelectorAll('.arabic-article').forEach(el => {
+        el.style.fontSize = currentFontSizeRem + 'rem';
+        el.style.lineHeight = '2.85';
+      });
+      localStorage.setItem('site_font_size', currentFontSizeRem);
+    }
+
+    function adjustFontSize(step) {
+      const delta = (step > 0 ? 0.15 : -0.15);
+      currentFontSizeRem = Math.max(1.1, Math.min(2.8, Math.round((currentFontSizeRem + delta) * 100) / 100));
+      applyFontSize();
+    }
+
+    function changeFontSize(delta) {
+      currentFontSizeRem = Math.max(1.1, Math.min(2.8, currentFontSizeRem + delta));
+      applyFontSize();
+    }
+
+    // Quran font toggle
+    let isQuranFont = false;
+    function toggleQuranFont() {
+      isQuranFont = !isQuranFont;
+      const fontName = isQuranFont ? "'Scheherazade New', 'Amiri Quran', serif" : "'Amiri', 'Traditional Arabic', serif";
+      changeArabicFont(fontName);
+      const btn = document.getElementById('fontToggleBtn');
+      if (btn) btn.textContent = isQuranFont ? "Шрифт: Scheherazade" : "Шрифт: Amiri";
+    }
+
+    // Tashkeel (diacritics / harakat) toggle
+    let isTashkeelOn = localStorage.getItem('site_tashkeel') !== 'false';
+
+    function toggleTashkeel() {
+      isTashkeelOn = !isTashkeelOn;
+      localStorage.setItem('site_tashkeel', isTashkeelOn ? 'true' : 'false');
+      applyTashkeel();
+    }
+
+    function applyTashkeel() {
+      const btn = document.getElementById('tashkeelBtn');
+      if (btn) {
+        btn.textContent = isTashkeelOn ? '🔤 Ташкиль: Вкл' : '🔤 Ташкиль: Выкл';
+        if (isTashkeelOn) {
+          btn.classList.add('btn-active');
+        } else {
+          btn.classList.remove('btn-active');
+        }
+      }
+      document.querySelectorAll('.ar-word, .para-title').forEach(el => {
+        const plain = el.getAttribute('data-plain');
+        const full = el.getAttribute('data-tashkeel');
+        if (plain && full) {
+          el.textContent = isTashkeelOn ? full : plain;
+        }
+      });
+    }
+
+    // Translation mode toggle
+    let hoverEnabled = true;
+    function toggleTranslationMode() {
+      hoverEnabled = !hoverEnabled;
+      const btn = document.getElementById('hoverModeBtn');
+      if (btn) {
+        if (hoverEnabled) {
+          btn.textContent = "Перевод: Наведение";
+          btn.classList.add('btn-active');
+        } else {
+          btn.textContent = "Перевод: Отключен";
+          btn.classList.remove('btn-active');
+          tooltip.style.display = 'none';
+        }
+      }
+    }
+
+    // Theme (Dark / Light)
+    function toggleTheme() {
+      const cur = document.documentElement.getAttribute('data-theme') || document.body.getAttribute('data-theme') || 'light';
+      const target = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', target);
+      document.body.setAttribute('data-theme', target);
+      localStorage.setItem('site_theme', target);
+      const btn = document.getElementById('themeBtn');
+      if (btn) btn.textContent = target === 'dark' ? '☀️ Светлая' : '🌙 Тёмная';
+    }
+
+    function toggleDarkMode() {
+      toggleTheme();
+    }
+
+    // Audio-Karaoke latency offset calibration
+    function changeSyncOffset(val) {
+      localStorage.setItem('site_karaoke_offset', val);
+      const sel = document.getElementById('syncOffsetSelect');
+      if (sel) sel.value = val;
+    }
+
+    // Initialize saved settings on page load
+    (function initSavedSettings() {
+      const savedFont = localStorage.getItem('site_ar_font');
+      if (savedFont) {
+        changeArabicFont(savedFont);
+      }
+      const savedSize = localStorage.getItem('site_font_size');
+      if (savedSize) {
+        currentFontSizeRem = parseFloat(savedSize);
+        applyFontSize();
+      }
+      const savedTheme = localStorage.getItem('site_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.body.setAttribute('data-theme', savedTheme);
+
+      const savedOffset = localStorage.getItem('site_karaoke_offset') || '180';
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const sel = document.getElementById('fontSelect');
+        if (sel && savedFont) sel.value = savedFont;
+        const btn = document.getElementById('themeBtn');
+        if (btn) btn.textContent = savedTheme === 'dark' ? '☀️ Светлая' : '🌙 Тёмная';
+        const syncSel = document.getElementById('syncOffsetSelect');
+        if (syncSel) syncSel.value = savedOffset;
+        applyFontSize();
+        applyTashkeel();
+      });
+    })();
+
+    // Verbs table search
+    function filterVerbs() {
+      const filter = document.getElementById('verbSearch').value.toLowerCase();
+      const rows = document.querySelectorAll('#verbsTable tbody tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    }
+
+    // Vocab table search
+    function filterVocab() {
+      const filter = document.getElementById('vocabSearch').value.toLowerCase();
+      const rows = document.querySelectorAll('#vocabTable tbody tr');
+      rows.forEach(row => {
+        const text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+      });
+    }
+
+    // PWA Service Worker & Install Prompt
+    let deferredPrompt = null;
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('[PWA] Service Worker registered with scope:', reg.scope))
+          .catch(err => console.log('[PWA] Service Worker registration failed:', err));
+      });
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      const btn = document.getElementById('pwaInstallBtn');
+      if (btn) btn.style.display = 'inline-flex';
+    });
+
+    function promptInstallPWA() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            const btn = document.getElementById('pwaInstallBtn');
+            if (btn) btn.style.display = 'none';
+          }
+          deferredPrompt = null;
+        });
+      }
+    }
+  </script>
